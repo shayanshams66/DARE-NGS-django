@@ -1,0 +1,30 @@
+from django.db import models
+from django.utils.encoding import smart_unicode
+
+
+# Create your models here.
+class JobManager(models.Manager):
+    def my_custom_sql():
+        cursor = connection.cursor()
+        cursor.execute('SELECT * FROM job')
+        row = cursor.fetchone()
+        f=open('ss.txt','w')
+        for p in row:
+           f.write(P)
+        f.close()
+        return row
+
+   
+class Job(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    status = models.CharField(max_length=200, blank=True)
+    submitted_time = models.CharField(max_length=100, blank=True)
+    type = models.CharField(max_length=100, blank=True)
+    detail_status = models.CharField(max_length=100, blank=True)
+    dareprocess_id = models.CharField(max_length=100, blank=True)
+    userid = models.IntegerField(blank=True, null=True)
+    objects=JobManager()
+    #user=models.ForeingKey(User)
+    class Meta:
+        managed = False
+        db_table = 'job'

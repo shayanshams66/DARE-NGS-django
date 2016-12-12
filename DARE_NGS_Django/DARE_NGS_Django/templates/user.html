@@ -1,0 +1,62 @@
+{% extends "site_base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load account_tags %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>DARE</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            {% block base %}{% include "site_base.html" %}{% endblock %}
+    </head>        
+    <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
+        <div class="{% block wrapper_class %}{% endblock %}">
+
+            {% block topbar_base %}
+                
+                
+                                    
+                                        {% block topbar %}
+                                            
+                                            
+                                                {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
+        
+                                        {% endblock %} 
+                <section id="content_body">
+                        <div class="container">
+                            {% include "_messages.html" %}
+                            <div class="row" id="moreInfo">
+                                <div class="col-sm-6">
+                                    
+                                    <h3>User Menu</h3>
+                                    <p>Click one of the following menus for job table view, a new job submission and job status of submitted jobs</p>
+                    
+                                    
+                    
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item">
+                                            <h4 class="list-group-item-heading">Click to see the record of your submitted job</h4>
+
+<a href="{% url "Jobs" %}" target=""class="btn btn-warning btn-block">Job Table</a></h4>
+                                        </a>
+                                        <a href="#" class="list-group-item">
+                                           <!--<h4 class="list-group-item-heading"><a href="http://dare.cct.lsu.edu:8080/gateways/ngs/ngs/rem_form" target="" class="btn btn-danger btn-block">New Job Submission</a></h4>-->
+                                           
+                                           <h4 class="list-group-item-heading">Click to submit a new job<a href="{% url "forms" %}" target=""class="btn btn-danger btn-block">New Job Submission</a></h4>
+
+                                        </a>
+                                        <a href="#" class="list-group-item">
+                                           <h4 class="list-group-item-heading">Click to conduct downstream analysis</h4>
+						<a href="{% url "dataAnalysis" %}" target=""class="btn btn-info btn-block">Simulation Data Management</a></h4>
+
+                                        </a>
+                                    </div><!-- list-group -->
+                    
+                                    
+                                </div><!-- end col-sm-6 -->
+
+                            </div><!-- end moreInfo -->
+                        </div>
+                </section>
+            {% endblock %}    

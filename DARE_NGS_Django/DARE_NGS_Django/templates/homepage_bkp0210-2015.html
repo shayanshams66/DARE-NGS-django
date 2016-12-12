@@ -1,0 +1,196 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}pinax-project-account{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
+<section>
+    <div class=container>
+
+        <div class="carousel slide" id="myCarousel">
+            
+        <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li class="active" data-slide-to="0" data-target="#myCarousel"></li>
+                <li data-slide-to="1" data-target="#myCarousel"></li>
+                <li data-slide-to="2" data-target="#myCarousel"></li>
+            </ol>
+            
+        <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active" id="slide1">
+                    <div class="carousel-caption">
+                        <h4>Louisiana Big Data Center</h4>
+                        <p>We are a group of researchers from the center for computation and technology and  biological sciences, biomedical diseases, and computer science at LSU</p>
+                    </div><!-- end carousel-caption-->
+                </div><!-- end item -->
+                    
+                <div class="item" id="slide2">
+                    <div class="carousel-caption">
+                        <h4>What we Do?</h4>
+                        <p>We investigate, develop, apply, and distribute BigData discovery and outcomes in a collaborative manner for traditional domain scientific research.</p>
+                    </div><!-- end carousel-caption-->
+                </div><!-- end item -->
+                    
+                <div class="item" id="slide3">
+                    <div class="carousel-caption">
+                        <h4>What we envision?</h4>
+                        <p>Cyberinfrastructure integrating software frameworks and scientific activities is a viable approach to deal with ongoing BigData research.</p>
+                    </div><!-- end carousel-caption-->
+                </div><!-- end item -->
+            </div><!-- carousel-inner -->
+                
+        <!-- Controls -->
+            <a class="left carousel-control" data-slide="prev" href="#myCarousel"><span class="icon-prev"></span></a>
+            <a class="right carousel-control" data-slide="next" href="#myCarousel"><span class="icon-next"></span></a>
+        </div><!-- end myCarousel -->
+    </div>    
+</section>    
+    <section class="jumbotron">
+        <div class="container">
+            {% include "_messages.html" %}
+            <h1>{% blocktrans %} <small>DARE-REM Science Gateway Project</small>{% endblocktrans %}</h1>
+           <p>
+                {% blocktrans %}
+DARE-REM is a science gateway aiming to serve a novel sampling technique, Replica Exchange Statistical Temperature Molecular Dynamics (RESTMD), along with a popular REMD.  The main purpose of this project is to provide an unique solution for large-scale conformational sampling of sizable biomolecules using scalable distribued cyberinfrastructures.                
+
+
+		{% endblocktrans %}
+            </p>
+
+
+
+
+            {% if user.is_authenticated %}
+            {% url "what_next" as what_next_url %}
+            <p class="what_next">{% blocktrans %}Wondering <a href="{{ what_next_url }}" class="btn btn-primary large">What Next</a>?{% endblocktrans %}</p>
+            {% else %}
+            {% url "account_login" as login_url %}
+            {% url "account_signup" as signup_url %}
+            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn btn-default">Log In</a> or <a href="{{ signup_url }}" class="btn btn-large">Sign Up</a> to try out the site.{% endblocktrans %}</p>
+            {% endif %}
+        </div>
+    </section>
+    <section>
+        <div class="container" id="featuresHeading">
+                <div class="col-12">
+                    <h2>Related Projects</h2>
+                    <p class="lead">As  technologies evolve, scientific research projects can produce, capture, store unprecedented amount of data. The ”Big Data” can remake science and engineering research.</p>
+                </div><!-- end col-12 -->
+            </div><!-- end featuresHeading -->    
+            
+            
+            <div class="row" id="features">
+                <div class="col-sm-4 feature">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">DARE Gateway Projects</h3>
+                        </div><!-- end panel-heading -->
+                        <img src="http://mathworld.wolfram.com/images/gifs/SmallTriambicIcosahedron.gif" alt="HTML5" class="img-circle">
+                        
+                        <p>Science Gateway enables non-experts to seamlessly utilize High-Performance and Distributed Computing resources such as the NSF's national production cyberinfrastructure -- XSEDE, our reginal cyberinfrastructure resources such as LONI, nationwide network-based project infrastructure -- GENI, and cloud environments such as Amazon EC2. </p>
+                        
+                        <a href="http://dare.cct.lsu.edu/"target="_blank" class="btn btn-warning btn-block">DARE WEBSITE</a>
+                    </div><!-- end panel -->
+                </div><!-- end feature -->
+                
+                <div class="col-sm-4 feature">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"> LSU Big Data Center</h3>
+                        </div><!-- end panel-heading -->
+                        <img src="http://mathworld.wolfram.com/images/gifs/SmallTriambicIcosahedron.gif"  alt="CSS3" class="img-circle">
+                        
+                        <p>The "Big Data" can remake sceince and engineering research...</p>
+                        
+                        <a href="http://bigdata.cct.lsu.edu" target="_blank" class="btn btn-danger btn-block">LSU Big Data Center WEBSITE</a>
+                    </div><!-- end panel -->
+                </div><!-- end feature -->
+                
+                <div class="col-sm-4 feature">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">RADICAL Cybertools</h3>
+                        </div><!-- end panel-heading -->
+                        <img src="http://mathworld.wolfram.com/images/gifs/SmallTriambicIcosahedron.gif" alt="Bootstrap 3" class="img-circle">
+                        
+                        <p>RADICAL Cybertools is an abstractions-based suite of well-defined capabilities that  to support science on a range of high-performance and distributed computing systems.</p>
+                        
+                        <a href="http://radical-cybertools.github.io/" target="_blank" class="btn btn-info btn-block"> More information about RADICAL Cybertools</a>
+                    </div><!-- end panel -->
+                </div><!-- end feature -->
+            </div><!-- end features -->
+            
+        <div class= "container">    
+            <div class="row" id="moreInfo">
+
+
+                <div class="col-sm-6">
+                    <h3>Focus areas</h3>
+                    <p>In the core of our DCI, we aim to build a high-speed intra-campus network that will connect separate lab groups on campus to LSU’s primary supercomputer facility. Along with industrial partners such as Samsung who made a commitment for high-speed network developement as well as donated large memory storage units on campus, our DCI can handle the massive amounts of data generated by Big Data applications.</p>
+                    
+                    <h4>High-performance and Distributed Biocomputing (HDBC) Lab</h4>
+                    
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">Science Gateway for Life Science BigData Research</h4>
+                            <p class="list-group-item-text">Science gateways are effective means for collaborative research activities with the capability to utilize large scale High-performance computing (HPC) resources and databases located in many different places.</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">BigData Genomic</h4>
+                            <p class="list-group-item-text">Our research interest is to develop novel strategies for large scale bigdata genomics projects.</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">Next Generation Sequencing Analytics</h4>
+                            <p class="list-group-item-text">We are currently engaged in genelab NGS sequencing core, BIOMMED, School of Vet. Medicine, LSU as a bioinformatics support team</p>
+                        </a>
+                    </div><!-- list-group -->
+                    
+                    <h5>People</h5>
+                    <p>HPC has been a key role for supporting large scale applications, and distributed computing strategies have been increasingly becoming critical, in particular, data intensive applications and BigData challenges. Currently, we focus on specific reesearch topics described below. You can contact us with e-mails. jhkim@cct.lsu.edu, nykim@cct.lsu.edu</p>
+                </div><!-- end col-sm-6 -->
+            </div><!-- end moreInfo -->
+        </div>    
+
+
+                <div class="col-sm-6">
+                    <h3>Our Mission and vision</h3>
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li>
+                            <li><a href="#tab2" data-toggle="tab">Section 2</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1">
+                                <h4>Our Location <small>You can find us here</small></h4>
+                                
+                                
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3441.0132834072547!2d-91.17148800000001!3d30.407365000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8626a7236b5aaaab%3A0x1e1e833a6e071383!2sLSU+Center+for+Computation+and+Technology!5e0!3m2!1sen!2sus!4v1422424377748" width="100%" height="200" frameborder="0" style="border:0"></iframe>
+                                
+                                <p>As technologies evolve, scientific research projects can produce, capture, store unprecedented amount of data. The ”Big Data” can remake science and engineering research. It also can change the paradigm of scientific research from a hypothesis-driven research to a data-driven research. Not only a few big sciences (such as, Genomics at Biology, Earth modeling at Geoscience, Large Hadron Collider at Physics, etc.) but also social sciences (research on census data and relational information among Laws, etc.) and industries (Facebook, Twitter, etc.) produce big data and analyze them to extract statistical and behavioral information."</p>
+
+
+                                <p>In the core of our DCI, we aim to build a high-speed intra-campus network that will connect separate lab groups on campus to LSU’s primary supercomputer facility. Along with industrial partners such as Samsung who made a commitment for high-speed network developement as well as donated large memory storage units on campus, our DCI can handle the massive amounts of data generated by Big Data applications. </p>
+                            </div><!-- end tab-pane -->
+                            
+                            <div class="tab-pane" id="tab2">
+                                <h4>A Left Floated Picture <small>Using Placehold.it</small></h4>
+                                
+                                <img src="http://cdn7.staztic.com/app/a/281/281883/lsu-tigers-clock-widget-793943-l-140x140.png" class="thumbnail pull-left" alt="Placeholder image">
+                                
+                                <p>"BigData is a very hot term" Park said. "Genome sequencing is one of the major drivers for Big Data research. It is unusual to produce many terrabytes of data in sequencing the human genome, or trillions of digital information bytes. But processing terrabytes of data has been a headache for researchers using their own equpiment."</p>
+                                
+                                <p>"Louisiana has a huge amount of compuatational Power. We have Super Computers at LSU. We recently Purchased Supermike-II, Which became a super-class computer. With this project, we can help researchers bring their data to bigger machines, not just one or two computers." Park added. </p>
+                            </div><!-- end tab-pane -->
+                        </div><!-- end tab-content -->
+                    </div><!-- end tabbable -->
+                </div><!-- end col-sm-6 -->    
+
+
+        
+           
+   
+{% endblock %}

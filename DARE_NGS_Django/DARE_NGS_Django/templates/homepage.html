@@ -1,0 +1,176 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}pinax-project-account{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
+{% load staticfiles %}
+<section>
+    <div class=container>
+
+        <div class="carousel slide" id="myCarousel">
+            
+        <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li class="active" data-slide-to="0" data-target="#myCarousel"></li>
+                <li data-slide-to="1" data-target="#myCarousel"></li>
+                <li data-slide-to="2" data-target="#myCarousel"></li>
+            </ol>
+            
+        <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active" id="slide1">
+                    <div class="carousel-caption">
+                        <h4>Big Data-scale Biocomputing Research</h4>
+                        <p>A group of researchers from the center for computation and technology, LSU, is working closely with investigators from biological sciences, biomedical diseases, and computer science at LSU.</p>
+                    </div><!-- end carousel-caption-->
+                </div><!-- end item -->
+                    
+                <div class="item" id="slide2">
+                    <div class="carousel-caption">
+                        <h4>What We Do?</h4>
+                        <p>We investigate, develop, apply, and distribute BigData discovery and outcomes in a collaborative manner for life science projects.</p>
+                    </div><!-- end carousel-caption-->
+                </div><!-- end item -->
+                    
+                <div class="item" id="slide3">
+                    <div class="carousel-caption">
+                        <h4>What We Envision?</h4>
+                        <p>Cyberinfrastructure integrating software frameworks and scientific activities is a viable approach to deal with ongoing large-scale biological computing and data analytics research.</p>
+                    </div><!-- end carousel-caption-->
+                </div><!-- end item -->
+            </div><!-- carousel-inner -->
+                
+        <!-- Controls -->
+            <a class="left carousel-control" data-slide="prev" href="#myCarousel"><span class="icon-prev"></span></a>
+            <a class="right carousel-control" data-slide="next" href="#myCarousel"><span class="icon-next"></span></a>
+        </div><!-- end myCarousel -->
+    </div>    
+</section>    
+    <section class="jumbotron">
+        <div class="container">
+            {% include "_messages.html" %}
+            <h1>{% blocktrans %} <small><center>DARE-NGS Science Gateway Project</center></small>{% endblocktrans %}</h1>
+           <p>
+                {% blocktrans %}
+DARE-NGS is a science gateway aime to serve Next-Generation Sequencing data analytics.  The aspect of this project is to provide a unique solution for large-scale (Big Data) genomics study  using scalable distribued cyberinfrastructures.                
+
+
+		{% endblocktrans %}
+            </p>
+
+
+
+
+            {% if user.is_authenticated %}
+            {% url "what_next" as what_next_url %}
+            <p class="what_next">{% blocktrans %}Wondering <a href="{{ what_next_url }}" class="btn btn-primary large">What Next</a>?{% endblocktrans %}</p>
+            {% else %}
+            {% url "account_login" as login_url %}
+            {% url "account_signup" as signup_url %}
+            
+            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn btn-default">Log In</a> or <a href="{{ signup_url }}" class="btn btn-large">Sign Up</a> to try out the site.{% endblocktrans %}</p>     {% endif %}
+        </div>
+    </section>
+
+    <section>
+
+     <div class="container" id="featuresHeading">
+                <div class="col-12">
+                    <h2>   Focus Areas</h2>
+                    <p>  The following Big Data applications are actively investigated along with DARE-based gateway projects by invesetigators in Advanced High-performance and Distributed Biocomputing (AHDB) Lab at CCT</p>
+
+                </div>
+             </div>
+		<div class="container" id="featuresHeading">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">Science Gateway for Life Science BigData Research</h4>
+                            <p class="list-group-item-text">Science gateways are effective means for collaborative research activities with the capability to utilize large scale High-performance computing (HPC) resources and databases located in many different places.</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">BigData Genomics</h4>
+                            <p class="list-group-item-text">Our research interest is to develop novel strategies for large scale bigdata genomics projects.</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">Next Generation Sequencing Analytics</h4>
+                            <p class="list-group-item-text">We are currently engaged in genelab NGS sequencing core, BIOMMED, School of Vet. Medicine, LSU and NIH COBRE as a bioinformatics support team</p>
+                        </a>
+
+   </section>
+
+
+
+    <section>
+        <div class="container" id="featuresHeading">
+                <div class="col-12">
+                    <h2>Related Projects</h2>
+                </div><!-- end col-12 -->
+           <!-- </div><!-- end featuresHeading -->    
+            
+            <div class="row" id="features">
+                <div class="col-sm-3 feature">
+
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">DARE Gateway projects</h3>
+                        </div><!-- end panel-heading -->
+<!--                        <img src="http://mathworld.wolfram.com/images/gifs/SmallTriambicIcosahedron.gif" alt="Bootstrap 3" class="img-circle">
+-->
+
+                            <img src="{% static "images/DARE_Gateway_W1.png" %}" class="img-circle" width="200" height="180"/>
+                            <p>Science Gateway enables non-experts to seamlessly utilize High-Performance and Distributed Computing resources including cloud environments such as Amazon EC2.</p>
+
+                        <a href="http://dare.cct.lsu.edu/" target="_blank" class="btn btn-info btn-block"> DARE-based gateways</a>
+                    </div><!-- end panel -->
+                        </div><!-- end feature -->
+
+                 <div class="col-sm-3 feature">
+                     <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">LSU Big Data Center</h3>
+                        </div><!-- end panel-heading -->
+<!--                        <img src="http://mathworld.wolfram.com/images/gifs/SmallTriambicIcosahedron.gif" alt="HTML5" class="img-circle">
+-->                        
+                       	     <img src="{% static "images/LSU_BigData_W2.png" %}" class="img-circle"width="200" height="180" />		
+			     <p>"Big Data" can remake sceince and engineering research... </p>	
+                        
+                        <a href="http://bigdata.cct.lsu.edu" target="_blank" class="btn btn-warning btn-block">Visit LSU Big Data Center</a>
+                    </div><!-- end panel -->
+                </div><!-- end feature -->
+                
+                <div class="col-sm-3 feature">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">NIH CEIDR</h3>
+                        </div><!-- end panel-heading -->
+<!--                        <img src="http://mathworld.wolfram.com/images/gifs/SmallTriambicIcosahedron.gif"  alt="CSS3" class="img-circle">----->
+                            <img src="{{ STATIC_URL }}images/CEIDR_W3.jpg" class="img-circle" width="200" height="180"/>                    
+                             <p>Bioinformatics support and collaborations for NIH Center for Experimental Infectious Disease Research.</p>
+                        
+                        <a href="http://cobre.ceidr.lsu.edu/" target="_blank" class="btn btn-danger btn-block">Visit NIH CEIDR</a>
+                    </div><!-- end panel -->
+                </div><!-- end feature -->
+                
+                <div class="col-sm-3 feature">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">RADICAL Cybertools</h3>
+                        </div><!-- end panel-heading -->
+                            <img src="{% static "images/radicalcyber.png" %}" class="img-circle" width="200" height="180"/>
+			    <p>RADICAL Cybertools is an abstractions-based suite of well-defined capabilities that  to support science on a range of high-performance and distributed computing systems.</p>
+                        
+                        <a href="http://radical-cybertools.github.io/" target="_blank" class="btn btn-info btn-block">Visit Radical Cybertools</a>
+                    </div><!-- end panel -->
+
+                    </div><!-- end feature -->
+
+
+
+
+      </section>     
+   
+{% endblock %}

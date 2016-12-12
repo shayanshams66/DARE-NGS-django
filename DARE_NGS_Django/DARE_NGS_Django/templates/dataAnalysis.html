@@ -1,0 +1,176 @@
+
+{#job_management/dataAnalysis.html #}
+{% load render_table from django_tables2 %}
+{% load staticfiles %}
+{% load url from future %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta charset="utf-8" />
+        <title>Dare-Rem</title>
+	
+        {% block viewport %}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% endblock %}
+
+        {% block style_base %}
+            <link href="{% static "pinax/css/theme.css" %}" rel="stylesheet">
+            <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+            <link href="{% static "includes/css/bootstrap-glyphicons.css" %}" rel="stylesheet">
+            <link href="{% static "includes/css/styles.css" %}" rel="stylesheet">
+            <script src="{% static "includes/js/modernizr-2.6.2.min.js" %}"></script>
+            <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+            <link href="{% static "font-awesome/css/font-awesome.css" %}" rel="stylesheet">
+            <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
+            {% block extra_style %}{% endblock %}
+        {% endblock %}
+
+        {% block html5shim %}
+            <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+            <!--[if lt IE 9]>
+                <script src="{% static "pinax/js/html5shiv.js" %}"></script>
+            <![endif]-->
+        {% endblock %}
+
+        {% block extra_head_base %}
+            {% block extra_head %}{% endblock %}
+        {% endblock %}
+    </head>
+    <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
+        <div class="{% block wrapper_class %}{% endblock %}">
+
+            {% block topbar_base %}
+                <header>
+                    <div class="navbar navbar-default {% block navbar_class %}navbar-fixed-top{% endblock %}">
+                        <div class="container">
+                        {% block topbar %}
+                            <div class="navbar-header">
+                                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="fa fa-bars"></span>
+                                </button>
+                                {% block site_brand %}<a class="navbar-brand" href="{% url "home" %}">DARE</a>{% endblock %}
+                            </div>
+                            <div class="collapse navbar-collapse navbar-responsive-collapse">
+                                {% block nav %}
+                                    {% comment %}
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="#tab_one">One</a></li>
+                                            <li><a href="#tab_two">Two</a></li>
+                                        </ul>
+                                    {% endcomment %}
+                                {% endblock %}
+                                {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
+                            </div>
+                        {% endblock %}
+                        </div>
+                    </div>
+                </header>
+            {% endblock %}
+            {% if request.user.is_authenticated %}
+                <section id="content_body">
+                        <div class="container">
+                            {% include "_messages.html" %}
+                            <div class="row" id="moreInfo">
+                                <!--<div class="col-sm-6">-->
+                               <!-- <a href="#" class="list-group-item">
+                                            <h4 class="list-group-item-heading"><a href="{% url "Jobs" %}" target="_blank"class="btn btn-warning btn-block">Job Table</a></h4> 
+                                <div class="row" id="moreInfo"> 
+                                    <div class="col-sm-12">      
+                                        <a href="#" class="list-group-item">
+                                            <h4 class="list-group-item-heading">Click to submit a new job<a href="{% url "forms" %}" target="_blank"class="btn btn-danger btn-default">Job Submission</a></h4>-->
+                                   	<h3>Data Analysis Table</h3>
+                                    <p>Select one of the following Job to analyse</p> 
+				                <div class="list-group">	
+                                       
+                                    <a href="#" class="list-group-item">
+                                        {% render_table table %}
+					                   <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">Continue</a>
+                                
+                                            <div class="modal fade" id="myModal">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button class="close" data-dismiss="modal">&times;</button>
+                                                
+                                                            <h4 class="modal-title">Data Analysis and management</h4>
+                                                        </div><!-- end modal-header -->
+                                                        <div class="modal-body">
+                                                            <h4>click to see the trajectory information</h4>
+                                                            <a href="http://dare.cct.lsu.edu/lite-web/" target=""class="btn btn-warning btn-default">Ibiomes Lite</a>
+ 
+
+                                                            <!--{% render_table table %}-->
+                                                            <hr>
+                                                            <h4>click to manage files</h4>
+                                                            <a href="{% url "forms3" %}" target=""class="btn btn-warning btn-default">File Transfer</a>
+                                                
+                                                   
+                                                        </div><!-- end modal-body -->
+                                            
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-default" data-dismiss="modal" type="button">Close</button> <button class="btn btn-primary" type="button">Save changes</button>
+                                                        </div><!-- end modal-footer -->
+                                                    </div><!-- end modal-content -->
+                                                </div><!-- end modal-dialog -->
+                                            </div><!-- end myModal -->    
+                                    </a>
+				                </div>
+				                <div class="list-group">
+                                    <a href="#" class="list-group-item">
+                                               <h4 class="list-group-item-heading">Click to go back to home page<a href="http://dare.cct.lsu.edu:8100/" target="_blank"class="btn btn-info btn-default">Main Menu</a></h4>
+                                           <!--"{% url "forms" %}"-->
+
+                                    </a>
+                                </div><!-- list-group -->
+                    
+                                    
+                                </div><!-- end col-sm-6 -->
+
+                            </div><!-- end moreInfo -->
+                        </div>
+                </section>
+
+               
+            {% else %}
+                 {% block body_base %}
+                    <section id="content_body">
+                        <div class="container">
+                            {% include "_messages.html" %}
+                            {% block body %}
+                            {% endblock %}
+                        </div>
+                    </section>
+                {% endblock %}
+
+            {% endif %}
+
+            {% block footer_base %}
+                <hr />
+                <footer>
+                    <div class="container">
+                        {% block footer %}{% endblock %}
+                    </div>
+                </footer>
+            {% endblock %}
+        </div>
+
+        {% block script_base %}
+            <script src="{% block jquery_src %}{% static "jquery/js/jquery-2.1.1.min.js" %}{% endblock %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+            <script src="{% static "pinax/js/theme.js" %}"></script>
+            {% block extra_script %}{% endblock %}
+        {% endblock %}
+
+        {% block extra_body_base %}
+            {% block extra_body %}{% endblock %}
+        {% endblock %}
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script>window.jQuery || document.write('<script src="{% static "includes/js/jquery-1.8.2.min.js" %}"><\/script>')</script>
+    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    
+    <!-- Custom JS -->
+    <script src="{% static "includes/js/script.js" %}"></script>
+        
+    </body>
+</html>
+
